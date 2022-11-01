@@ -12,7 +12,7 @@ Hive is a "consensus interpretation" layer for the Steem blockchain, maintaining
 Dependencies:
 
  - OSX: `$ brew install python3 postgresql`
- - Ubuntu: `$ sudo apt-get install python3 python3-pip`
+ - Ubuntu: `$ sudo apt-get install python3 python3-pip postgresql`
 
 Installation:
 
