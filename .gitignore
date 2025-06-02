@@ -124,3 +124,10 @@ tests/failed_blocks/
 /tests/envdir-to-envfile.sh
 /deploy/
 /scripts/hive.sqlite
+.vscode
+
+# docker
+redis_data/*
+postgres_data/*
+!redis_data/.gitkeep
+!postgres_data/.gitkeep

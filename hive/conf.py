@@ -31,8 +31,9 @@ class Conf():
         add('mode', nargs='*', default=['sync'])
 
         # common
-        add('--database-url', env_var='DATABASE_URL', required=False, help='database connection url', default='')
-        add('--steemd-url', env_var='STEEMD_URL', required=False, help='steemd/jussi endpoint', default='https://api.steemit.com')
+        add('--database-url', env_var='DATABASE_URL', required=True, help='database connection url', default='')
+        add('--steemd-url', env_var='STEEMD_URL', required=True, help='steemd/jussi endpoint', default='https://api.steemit.com')
+        add('--redis-url', env_var='REDIS_URL', required=True, help='redis connection url', default='')
         add('--muted-accounts-url', env_var='MUTED_ACCOUNTS_URL', required=False, help='url to flat list of muted accounts', default='')
 
         # server
@@ -52,6 +53,9 @@ class Conf():
         add('--test-disable-sync', type=strtobool, env_var='TEST_DISABLE_SYNC', help='(debug) skip sync and sweep; jump to block streaming', default=False)
         add('--test-max-block', type=int, env_var='TEST_MAX_BLOCK', help='(debug) only sync to given block, for running sync test', default=None)
         add('--test-profile', type=strtobool, env_var='TEST_PROFILE', help='(debug) profile execution', default=False)
+
+        # txid collector
+        add('--txid-collector', type=strtobool, env_var='TXID_COLLECTOR', help='alternative collect txid to block number', default=False)
 
         # needed for e.g. tests - other args may be present
         args = (parser.parse_args() if strict

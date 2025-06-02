@@ -509,7 +509,7 @@ class CommunityOp:
     def _read_title(self):
         _title = read_key_str(self.op, 'title', 32, allow_blank=True) or ''
         _title = _title.strip()
-        self.title = _title
+        self.title = re.sub(r'\x00',r' ', _title)
 
     def _read_props(self):
         # TODO: assert props changed?
@@ -538,6 +538,7 @@ class CommunityOp:
             out['settings'] = json.dumps(settings)
             if 'avatar_url' in settings:
                 avatar_url = settings['avatar_url']
+                assert  avatar_url is not None
                 assert not avatar_url or _valid_url_proto(avatar_url)
                 out['avatar_url'] = avatar_url
         assert out, 'props were blank'
